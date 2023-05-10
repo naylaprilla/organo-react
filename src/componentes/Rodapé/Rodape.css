@@ -3,14 +3,13 @@
     color: #fff;
     padding: 80px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
 .footer ul li {
     display: flex;
-    gap: 15px;
-    margin-right: 32px;
+    gap: 32px;
 
 }
 
