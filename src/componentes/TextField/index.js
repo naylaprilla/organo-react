@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './TextField.css'
 
 const TextField = (props) => {
@@ -7,14 +6,13 @@ const TextField = (props) => {
     
 
     const whenTyped = (evento) => {
-        setValor(evento.target.value)
-        console.log(valor)
+        props.whenChanged(evento.target.value)
     } 
 
     return (
     <div className="text__field" >
         <label>{props.label}</label>
-        <input value={valor} onChange={whenTyped} required={props.mandatory} placeholder={placeholderChange}/>
+        <input value={props.valor} onChange={whenTyped} required={props.mandatory} placeholder={placeholderChange}/>
     </div>
     )
 }

@@ -1,57 +1,66 @@
-import Button from '../Button'
-import DropDownList from '../DropDownList'
-import TextField from '../TextField'
-import './GuestCard.css'
 import { useState } from "react"
+import Button from '../Button'
+import TextField from '../TextField'
+import DropDownList from '../DropDownList'
+import './GuestCard.css'
 
 
 const GuestCard = (props) => {
-    const times =[
-        'Programação',
-        'Front-End',
-        'Data Science',
-        'DevOps',
-        'Ux e Design',
-        'Mobile',
-        'Inovação e Gestão',
-    ]
-
-    const [nome, setName] = useState('')
+    
+    const [name, setName] = useState('')
     const [cargo, setCargo] = useState('')
     const [imagem, setImage] = useState('')
+    const [time, setTime] = useState('')
 
     const whenSave = (evento) => {
         evento.preventDefault()
-        console.log('O formulário foi submetido', nome, cargo, imagem)
+        props.whenColaboradorCadastrado({
+            name,
+            cargo,
+            imagem,
+            time
+        })
+        setName('')
+        setCargo('')
+        setImage('')
+        setTime('')
     }
 
 
     return (
         <section className="guest__card">
-            <form onSumit={whenSave}>
-                <h2>Preencha os dados para criar o card do colaborador</h2>
+            <form onSubmit={whenSave}>
+                <h2>Preencha os dados para criar o card do seu personagem</h2>
                 <TextField 
                     mandatory={true} 
                     label="Nome" 
                     placeholder="Digite seu nome"
-                    valor={nome}
-                    whenChange={valor => setName(valor)}
+                    valor={name}
+                    whenChanged={valor => setName(valor)}
                 />
                 <TextField 
                     mandatory={true} 
-                    label="Cargo" 
-                    placeholder="Digite seu cargo"
+                    label="Especialidade" 
+                    placeholder="Digite seu feitiço preferido"
                     valor={cargo}
-                    whenChange={valor => setCargo(valor)}
+                    whenChanged={valor => setCargo(valor)}
                 />
                 <TextField 
                     label="Imagem" 
                     placeholder="Digite o endereço url da imagem"
                     valor={imagem}
-                    whenChange={valor => setImage(valor)}
+                    whenChanged={valor => setImage(valor)}
                 />
-                <DropDownList madatory={true} label="Time" itens={times}/>
-                <Button>Criar Card</Button>
+                <DropDownList 
+                    madatory={true} 
+                    label="Casa" 
+                    itens={props.times}
+                    valor={time}
+                    whenChanged={valor => setTime(valor)}
+                />
+                <Button>
+                    Criar Card
+                </Button>
             </form>
         </section>
     )
