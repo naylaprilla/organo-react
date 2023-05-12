@@ -4,7 +4,6 @@ const TextField = (props) => {
 
     const placeholderChange = `${props.placeholder}...`
     
-
     const whenTyped = (evento) => {
         props.whenChanged(evento.target.value)
     } 

@@ -1,7 +1,7 @@
 import Colaborador from '../Colaborador'
 import './Time.css'
 
-const House = (props) => {
+const Time = (props) => {
     const css = { backgroundColor: props.secondaryColor }
 
     return (
@@ -14,4 +14,4 @@ const House = (props) => {
     )
 }
 
-export default House
+export default Time

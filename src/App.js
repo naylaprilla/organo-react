@@ -50,7 +50,7 @@ function App() {
           name={time.name} 
           primaryColor={time.primaryColor} 
           secondaryColor={time.secondaryColor}
-          colaboradores={colaboradores.filter(colaborador => colaborador.time)}
+          colaboradores={colaboradores.filter(colaborador => colaborador.time === time.name)}
         />
       )}
 
