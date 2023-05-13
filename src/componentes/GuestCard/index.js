@@ -5,31 +5,27 @@ import DropDownList from '../DropDownList'
 import './GuestCard.css'
 
 
-const GuestCard = (props) => {
+const GuestCard = ({aoCadastrar, times}) => {
     
     const [name, setName] = useState('')
     const [cargo, setCargo] = useState('')
     const [imagem, setImage] = useState('')
     const [time, setTime] = useState('')
 
-    const whenSave = (evento) => {
+    const whenSubmit = (evento) => {
         evento.preventDefault()
-        props.whenColaboradorCadastrado({
+        console.log('form enviado', name, cargo, imagem, time)
+        aoCadastrar({
             name,
             cargo,
             imagem,
             time
         })
-        setName('')
-        setCargo('')
-        setImage('')
-        setTime('')
     }
-
 
     return (
         <section className="guest__card">
-            <form onSubmit={whenSave}>
+            <form onSubmit={whenSubmit}>
                 <h2>Preencha os dados para criar o card do seu personagem</h2>
                 <TextField 
                     mandatory={true} 
@@ -54,13 +50,11 @@ const GuestCard = (props) => {
                 <DropDownList 
                     madatory={true} 
                     label="Casa" 
-                    itens={props.times}
+                    itens={times}
                     valor={time}
                     whenChanged={valor => setTime(valor)}
                 />
-                <Button>
-                    Criar Card
-                </Button>
+                <Button texto='Criar Card'/>
             </form>
         </section>
     )

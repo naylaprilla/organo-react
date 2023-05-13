@@ -32,30 +32,29 @@ function App() {
 
   const [colaboradores, setColaboradores] = useState([])
 
-  const whenNewAddColaborador = (colaborador) => {
-    setColaboradores([...colaboradores, colaborador])
+
+
+  function deletarColaborador() {
+    console.log('deletando colaborador')    
   }
 
   return (
     <div className="App">
       <Banner />
       <GuestCard 
-        times={times.map(time => time.name)}whenColaboradorCadastrado={colaborador => 
-          whenNewAddColaborador(colaborador)}
+        times={times.map(time => time.name)} aoCadastrar={colaborador => setColaboradores([...colaboradores, colaborador])}
       />
-
-      {times.map(time => 
-        <Time 
-          key={time.name} 
-          name={time.name} 
-          primaryColor={time.primaryColor} 
-          secondaryColor={time.secondaryColor}
-          colaboradores={colaboradores.filter(colaborador => colaborador.time === time.name)}
-        />
-      )}
-
-      <Rodape />
-      
+        <section className='times'>
+          <h1>Minha Organização</h1>
+          {times.map((time, indice) => <Time 
+              key={indice} 
+              time={time}
+              colaboradores={colaboradores.filter(colaborador => colaborador.time === time.name)}
+              aoDeletar={deletarColaborador}
+            />
+          )}         
+        </section>
+      <Rodape />      
     </div>
   );
 }
