@@ -5,12 +5,14 @@ import DropDownList from '../DropDownList'
 import './GuestCard.css'
 
 
-const GuestCard = ({aoCadastrar, times}) => {
+const GuestCard = ({aoCadastrar, times, cadastrarTime}) => {
     
     const [name, setName] = useState('')
     const [cargo, setCargo] = useState('')
     const [imagem, setImage] = useState('')
     const [time, setTime] = useState('')
+    const [nameTime, setNameTime] = useState('')
+    const [corTime, setCorTime] = useState('')
 
     const whenSubmit = (evento) => {
         evento.preventDefault()
@@ -24,8 +26,8 @@ const GuestCard = ({aoCadastrar, times}) => {
     }
 
     return (
-        <section className="guest__card">
-            <form onSubmit={whenSubmit}>
+        <section className="guest__card-container">
+            <form className="guest__card" onSubmit={whenSubmit}>
                 <h2>Preencha os dados para criar o card do seu personagem</h2>
                 <TextField 
                     mandatory={true} 
@@ -55,6 +57,27 @@ const GuestCard = ({aoCadastrar, times}) => {
                     whenChanged={valor => setTime(valor)}
                 />
                 <Button texto='Criar Card'/>
+            </form>
+            <form className="guest__card" onSubmit={(evento) => { 
+                evento.preventDefault()
+                cadastrarTime({ name: nameTime, cor: corTime})
+            }}>
+                <h2>Aqui você pode criar uma nova casa para Hogwarts</h2>
+                <TextField 
+                    mandatory
+                    label="Nome" 
+                    placeholder="Digite o nome da casa"
+                    valor={nameTime}
+                    whenChanged={valor => setNameTime(valor)}
+                />
+                <TextField 
+                    mandatory
+                    label="Cor" 
+                    placeholder="Digite a cor da sua casa"
+                    valor={corTime}
+                    whenChanged={valor => setCorTime(valor)}
+                />
+                <Button texto='Criar uma nova casa'/>
             </form>
         </section>
     )
