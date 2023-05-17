@@ -1,6 +1,6 @@
 import { useState } from "react"
 import Button from '../Button'
-import TextField from '../TextField'
+import Field from '../Field'
 import DropDownList from '../DropDownList'
 import './GuestCard.css'
 
@@ -29,21 +29,21 @@ const GuestCard = ({aoCadastrar, times, cadastrarTime}) => {
         <section className="guest__card-container">
             <form className="guest__card" onSubmit={whenSubmit}>
                 <h2>Preencha os dados para criar o card do seu personagem</h2>
-                <TextField 
+                <Field 
                     mandatory={true} 
                     label="Nome" 
                     placeholder="Digite seu nome"
                     valor={name}
                     whenChanged={valor => setName(valor)}
                 />
-                <TextField 
+                <Field 
                     mandatory={true} 
                     label="Especialidade" 
                     placeholder="Digite seu feitiço preferido"
                     valor={cargo}
                     whenChanged={valor => setCargo(valor)}
                 />
-                <TextField 
+                <Field 
                     label="Imagem" 
                     placeholder="Digite o endereço url da imagem"
                     valor={imagem}
@@ -63,14 +63,14 @@ const GuestCard = ({aoCadastrar, times, cadastrarTime}) => {
                 cadastrarTime({ name: nameTime, cor: corTime})
             }}>
                 <h2>Aqui você pode criar uma nova casa para Hogwarts</h2>
-                <TextField 
+                <Field 
                     mandatory
                     label="Nome" 
                     placeholder="Digite o nome da casa"
                     valor={nameTime}
                     whenChanged={valor => setNameTime(valor)}
                 />
-                <TextField 
+                <Field 
                     mandatory
                     label="Cor" 
                     placeholder="Digite a cor da sua casa"
