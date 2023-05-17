@@ -107,7 +107,6 @@ function App() {
         times={times.map(time => time.name)} 
         aoCadastrar={colaborador => setColaboradores([...colaboradores, colaborador])}/>
       <section className='times'>
-        <h1>Minha Organização</h1>
         {times.map((time, indice) => 
           <Time 
             aoFavoritar={resolverFavorito}
