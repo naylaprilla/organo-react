@@ -1,11 +1,17 @@
 import './Field.css'
 
-const Field = ({type, label, placeholder, valor, whenChanged, mandatory = false}) => {
+const Field = ({ type ='text', label, placeholder, valor, whenChanged, mandatory = false}) => {
     
     return (
-    <div className="field" >
+    <div className={`field field-${type}`} >
         <label>{label}</label>
-        <input value={type} onChange={evento => whenChanged(evento.target.value)} required={mandatory} placeholder={placeholder}/>
+        <input  
+            type={type} 
+            value={valor} 
+            onChange={evento => whenChanged(evento.target.value)} 
+            required={mandatory} 
+            placeholder={placeholder}
+        />
     </div>
     )
 }

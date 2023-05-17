@@ -38,8 +38,8 @@ const GuestCard = ({aoCadastrar, times, cadastrarTime}) => {
                 />
                 <Field 
                     mandatory={true} 
-                    label="Especialidade" 
-                    placeholder="Digite seu feitiço preferido"
+                    label="Título" 
+                    placeholder="Como você é conhecido?"
                     valor={cargo}
                     whenChanged={valor => setCargo(valor)}
                 />
@@ -72,7 +72,8 @@ const GuestCard = ({aoCadastrar, times, cadastrarTime}) => {
                 />
                 <Field 
                     mandatory
-                    label="Cor" 
+                    type="color"
+                    label="Cor"
                     placeholder="Digite a cor da sua casa"
                     valor={corTime}
                     whenChanged={valor => setCorTime(valor)}
